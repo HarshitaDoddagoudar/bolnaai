@@ -240,10 +240,10 @@ export const INITIAL_IMPROVEMENTS: ImprovementItem[] = [
 ];
 
 export const DEFAULT_BOLNA_CONFIG: BolnaConfig = {
-  apiKey: '',
-  agentId: 'bolna_agent_demo_smartcrisis_v2',
-  apiBaseUrl: 'https://api.bolna.dev/v1',
-  webhookUrl: 'https://smartcrisis.internal/api/webhooks/voice',
-  isConnected: false,
-  environment: 'sandbox'
+  apiKey: 'bn-9674e02f46e944719a2f1986a7120300',
+  agentId: '77903ab3-a9e5-4756-904b-345fdf96f785',
+  apiBaseUrl: 'https://api.bolna.ai',
+  webhookUrl: 'http://localhost:3000/api/webhook',
+  isConnected: true,
+  environment: 'production'
 };

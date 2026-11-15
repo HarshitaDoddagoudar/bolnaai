@@ -45,49 +45,71 @@ export class BolnaVoiceService {
 
   /**
    * Status check for Bolna connectivity.
-   * Returns false in this prototype since no actual credentials have been bound.
    */
   public isConfigured(): boolean {
-    return Boolean(this.config.apiKey && this.config.agentId && this.config.isConnected);
+    return Boolean(this.config.apiKey && this.config.agentId);
   }
 
   /**
-   * Placeholder to initiate a live voice session with Bolna.
-   * In prototype mode, this explicitly informs the user that real integration is pending.
+   * Triggers a live telephone call to the verified phone number (+917357527386).
    */
   public async initiateCall(scenarioId: string, promptVersion: string): Promise<BolnaCallSession> {
-    if (!this.isConfigured()) {
+    try {
+      const response = await fetch('/api/trigger-call', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          agent_id: this.config.agentId || '77903ab3-a9e5-4756-904b-345fdf96f785',
+          recipient_phone_number: '+917357527386',
+          scenario_id: scenarioId,
+          prompt_version: promptVersion
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        throw new Error(data.error || 'Failed to trigger outbound call');
+      }
+
+      this.currentSession = {
+        sessionId: data.execution_id,
+        agentId: this.config.agentId,
+        status: 'connected',
+        startedAt: new Date().toISOString()
+      };
+
+      return this.currentSession;
+    } catch (err: any) {
       return {
-        sessionId: `mock-session-${Date.now()}`,
-        agentId: this.config.agentId || 'UNCONFIGURED',
-        status: 'disconnected',
-        errorMessage: 'Local Prototype Active: Bolna API Key and Agent ID are not configured. Using safe local simulation engine.'
+        sessionId: `err-${Date.now()}`,
+        agentId: this.config.agentId || '77903ab3-a9e5-4756-904b-345fdf96f785',
+        status: 'failed',
+        errorMessage: err.message || 'Call failed'
       };
     }
-
-    // DOCUMENTATION TEMPLATE FOR REAL IMPLEMENTATION:
-    // const response = await fetch(`${this.config.apiBaseUrl}/agent/${this.config.agentId}/call`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Authorization': `Bearer ${this.config.apiKey}`,
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     scenario_id: scenarioId,
-    //     prompt_version: promptVersion,
-    //     webhook: this.config.webhookUrl,
-    //     safety_disclaimer: "Fictional training simulation - Not an emergency service"
-    //   })
-    // });
-    // return await response.json();
-
-    throw new Error('Bolna production integration is pending valid API credentials.');
   }
 
   /**
-   * Placeholder to terminate an active call session.
+   * Checks the status and retrieves evaluation report for a call execution.
+   */
+  public async checkExecution(executionId: string): Promise<any> {
+    const res = await fetch(`/api/call-status?id=${executionId}`);
+    return await res.json();
+  }
+
+  /**
+   * Terminates an active call session.
    */
   public async terminateCall(sessionId: string): Promise<void> {
+    try {
+      await fetch('/api/stop-call', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ execution_id: sessionId })
+      });
+    } catch (e) {
+      console.warn('Failed to stop call', e);
+    }
     this.currentSession = null;
   }
 }

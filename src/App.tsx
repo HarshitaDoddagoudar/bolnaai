@@ -187,6 +187,8 @@ export const App: React.FC = () => {
                 promptVersion={promptVersion}
                 onChangePromptVersion={handleChangePromptVersion}
                 onSaveTestRecord={handleSaveTestRecord}
+                onSaveEvaluation={handleSaveEvaluation}
+                bolnaConfig={bolnaConfig}
                 onOpenBolnaConfig={() => setIsBolnaModalOpen(true)}
                 onNavigate={setCurrentTab}
               />
