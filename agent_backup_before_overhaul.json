@@ -1,0 +1,33 @@
+{
+  "agent_id": "77903ab3-a9e5-4756-904b-345fdf96f785",
+  "backed_up_at": "2026-11-15T15:47:30+05:30",
+  "agent_name": "Smart Crisis Emergency Assistant",
+  "agent_status": "processed",
+  "agent_welcome_message": "Hello. You are speaking with Smart Crisis, an AI emergency simulation assistant. This is a fictional training exercise, not a real emergency service. Can you tell me what is happening and where you are right now?",
+  "tools_config": {
+    "llm_agent": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "temperature": 0.2,
+      "max_tokens": 150
+    },
+    "synthesizer": {
+      "provider": "cartesia",
+      "model": "sonic-3.5",
+      "voice": "Jacqueline - Reassuring Agent",
+      "voice_id": "9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
+      "language": "en"
+    },
+    "transcriber": {
+      "provider": "deepgram",
+      "model": "nova-3",
+      "language": "en",
+      "endpointing": 250
+    }
+  },
+  "task_config": {
+    "call_terminate": 300,
+    "hangup_after_silence": 15,
+    "number_of_words_for_interruption": 2
+  }
+}

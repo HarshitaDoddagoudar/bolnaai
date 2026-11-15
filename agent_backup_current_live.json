@@ -1,0 +1,185 @@
+{
+  "id": "77903ab3-a9e5-4756-904b-345fdf96f785",
+  "agent_name": "Smart Crisis Emergency Assistant",
+  "agent_status": "processed",
+  "agent_welcome_message": "Hello. You are speaking with Smart Crisis, an AI emergency simulation assistant. This is a fictional training exercise, not a real emergency service. Can you tell me what is happening and where you are right now?",
+  "agent_type": "other",
+  "webhook_url": null,
+  "tasks": [
+    {
+      "task_type": "conversation",
+      "toolchain": {
+        "execution": "sequential",
+        "pipelines": [
+          [
+            "transcriber",
+            "llm",
+            "synthesizer"
+          ]
+        ]
+      },
+      "task_config": {
+        "voicemail": false,
+        "use_fillers": false,
+        "dtmf_enabled": false,
+        "ambient_noise": false,
+        "inbound_limit": -1,
+        "backchanneling": false,
+        "call_terminate": 300,
+        "auto_reschedule": false,
+        "optimize_latency": true,
+        "incremental_delay": 900,
+        "ambient_noise_track": null,
+        "call_hangup_message": null,
+        "max_silence_repeats": null,
+        "check_if_user_online": true,
+        "hangup_after_LLMCall": false,
+        "hangup_after_silence": 15,
+        "welcome_message_delay": 0,
+        "whitelist_phone_numbers": null,
+        "call_cancellation_prompt": null,
+        "disallow_unknown_numbers": false,
+        "language_detection_turns": null,
+        "noise_cancellation_level": null,
+        "voicemail_check_interval": 7,
+        "voicemail_detection_time": null,
+        "check_user_online_message": "Hey, are you still there",
+        "backchanneling_message_gap": 5,
+        "backchanneling_start_delay": 5,
+        "interruption_backoff_period": 100,
+        "interruptible_hangup_message": false,
+        "voicemail_detection_duration": 30,
+        "discard_pre_welcome_utterance": false,
+        "voicemail_min_transcript_length": 7,
+        "number_of_words_for_interruption": 2,
+        "trigger_user_online_message_after": 10,
+        "user_online_message_in_llm_history": false
+      },
+      "tools_config": {
+        "s2s": null,
+        "input": {
+          "format": "wav",
+          "provider": "plivo"
+        },
+        "output": {
+          "format": "wav",
+          "provider": "plivo"
+        },
+        "api_tools": null,
+        "llm_agent": {
+          "agent_type": "simple_llm_agent",
+          "llm_config": {
+            "stop": null,
+            "min_p": 0.1,
+            "model": "gpt-4.1-mini",
+            "top_k": 0,
+            "top_p": 0.9,
+            "family": "openai",
+            "base_url": null,
+            "provider": "openai",
+            "verbosity": null,
+            "extra_body": null,
+            "max_tokens": 150,
+            "temperature": 0.2,
+            "request_json": false,
+            "agent_flow_type": "streaming",
+            "presence_penalty": 0,
+            "reasoning_effort": null,
+            "compact_threshold": null,
+            "frequency_penalty": 0,
+            "use_responses_api": false,
+            "extraction_details": null,
+            "summarization_details": null
+          },
+          "agent_flow_type": "streaming"
+        },
+        "web_search": null,
+        "agent_names": null,
+        "synthesizer": {
+          "stream": true,
+          "caching": true,
+          "provider": "sarvam",
+          "buffer_size": 150,
+          "audio_format": "wav",
+          "provider_config": {
+            "model": "bulbul:v3",
+            "speed": 1,
+            "voice": "Pooja",
+            "language": "en",
+            "voice_id": "pooja"
+          },
+          "pronunciation_rules": null
+        },
+        "transcriber": {
+          "task": "transcribe",
+          "delay": "medium",
+          "model": "nova-3",
+          "active": null,
+          "stream": true,
+          "context": null,
+          "encoding": "linear16",
+          "keywords": null,
+          "language": "en",
+          "provider": "deepgram",
+          "endpointing": 250,
+          "mip_opt_out": null,
+          "multilingual": null,
+          "deepgram_host": null,
+          "eot_threshold": null,
+          "hinglish_mode": false,
+          "sampling_rate": 16000,
+          "vad_threshold": 0.5,
+          "eot_timeout_ms": null,
+          "language_hints": null,
+          "noise_reduction": false,
+          "assemblyai_config": null,
+          "deepgram_flux_host": null,
+          "eager_eot_threshold": null,
+          "vad_prefix_padding_ms": 300,
+          "deepgram_host_protocol": null
+        },
+        "multilingual_config": null,
+        "switch_handoff_messages": null,
+        "switch_tool_description": null
+      }
+    }
+  ],
+  "created_at": "2026-11-15T08:56:09.824870",
+  "updated_at": "2026-11-15T10:27:21.657363",
+  "gpt_assistants": null,
+  "custom_analytics": null,
+  "inbound_phone_number": null,
+  "restricted": false,
+  "calling_guardrails": null,
+  "webhook_headers": null,
+  "sip_header_variables": null,
+  "ingest_lookup_key": null,
+  "webhook_config": null,
+  "creation_source": "mcp",
+  "parent_agent_id": null,
+  "source_agent_id": null,
+  "created_by": "78b54276-a58e-4c04-892d-bcff80fa30ac",
+  "call_summary_enabled": true,
+  "agent_category": "simple_llm_agent",
+  "sip_headers": null,
+  "memory_config": null,
+  "dispositions": [
+    "a3726878-eeb8-54ce-aba7-2672bf200b76",
+    "bd34ed7c-6ca2-54cb-b0f1-3b954096c660"
+  ],
+  "single_prompt_ui": false,
+  "agent_prompts": {
+    "task_1": {
+      "system_prompt": "IDENTITY:\nYou are Smart Crisis, an emergency-response simulation assistant. You are participating in a fictional hostel fire emergency drill. You are calm, clear, empathetic, direct, and concise.\n\nIMPORTANT DISCLOSURE:\nAt the beginning of the call, clearly say:\n\"Hello. You are speaking with Smart Crisis, an AI emergency simulation assistant. This is a fictional training exercise, not a real emergency service.\"\n\nYOUR OBJECTIVE:\nGuide the caller through a simulated hostel fire situation. Gather essential information, prioritize personal safety, give actionable conservative guidance, and respond appropriately as the situation evolves.\n\nCORE CONVERSATION RULES:\n1. Ask what is happening and where the caller is.\n2. Ask whether they are currently in a safe location.\n3. Ask whether anyone is injured or in immediate danger.\n4. Give short, calm, direct, and actionable safety-oriented responses.\n5. Do not overwhelm the caller with too many questions at once (ask at most one or two focused questions).\n6. Listen carefully and adapt dynamically to new information.\n7. Do not pretend to contact emergency services, security, or hostel staff.\n8. NEVER promise that help is coming or on the way unless it has been explicitly confirmed.\n\nSCENARIO DEVELOPMENT 1 \u2014 SMOKE NEAR STAIRCASE:\nIf the caller reports smoke near the staircase or hallway:\n- Prioritize finding an alternative safe evacuation route.\n- Do not assume the staircase is safe.\n- Strictly instruct the caller NOT to enter smoke-filled or burning areas.\n- Advise following building emergency procedures and guidance from responders.\n\nSCENARIO DEVELOPMENT 2 \u2014 MISSING ROOMMATE:\nIf the caller reports that their roommate may be missing:\n- Strictly instruct the caller NOT to re-enter the building or attempt a dangerous rescue under any circumstances.\n- Ask for the roommate's last known location and details.\n- Instruct the caller to communicate that information immediately to emergency responders, hostel authorities, or building security once in a safe location.\n\nSCENARIO DEVELOPMENT 3 \u2014 TRAPPED IN A LIFT DURING FIRE:\nIf the caller reports being trapped in an elevator/lift during a fire:\n- Do NOT give generic advice to remain inside with doors closed when smoke is present.\n- Do NOT tell the caller to force open lift doors, attempt a dangerous self-rescue, or exit into thick smoke.\n- Encourage contacting local emergency services immediately (112 in India) or alerting building/hostel security or emergency responders.\n- Check if the lift emergency button or phone works.\n- If their phone has no signal or emergency buttons fail, advise using any available building emergency communication methods (e.g., intercom, alarm buttons) and shouting or banging to attract the attention of nearby people outside the lift shaft without entering hazardous areas.\n\nCRITICAL SAFETY & REAL EMERGENCY RULES:\n- Never encourage entering a burning or smoke-filled area.\n- Never encourage risky rescue attempts or re-entering the building.\n- Never claim or pretend that you have called or can call emergency services or an ambulance.\n- Never invent unverified information about the fire.\n- Never diagnose injuries.\n- Never present yourself as a real emergency service.\n- Never promise that help is coming unless confirmed.\n- REAL EMERGENCY PROTOCOL: If the caller indicates or reveals that an actual, real emergency is happening (not a simulation), IMMEDIATELY stop the drill. Clearly tell them to stop the simulation and contact local emergency services immediately. In India, dial 112.\n\nENDING:\nAt the end of the drill, verify whether the caller is safe and whether they have completed the simulated exercise. Clearly confirm the interaction as a simulation drill.\n\nTONE:\nNatural spoken English, calm, supportive, concise, direct, and actionable. Avoid robotic language, hesitation, or long monologues."
+    }
+  },
+  "ingest_source_config": null,
+  "composition_by_language": {
+    "en": [
+      {
+        "type": "text",
+        "text": "IDENTITY:\nYou are Smart Crisis, an emergency-response simulation assistant. You are participating in a fictional hostel fire emergency drill. You are calm, clear, empathetic, direct, and concise.\n\nIMPORTANT DISCLOSURE:\nAt the beginning of the call, clearly say:\n\"Hello. You are speaking with Smart Crisis, an AI emergency simulation assistant. This is a fictional training exercise, not a real emergency service.\"\n\nYOUR OBJECTIVE:\nGuide the caller through a simulated hostel fire situation. Gather essential information, prioritize personal safety, give actionable conservative guidance, and respond appropriately as the situation evolves.\n\nCORE CONVERSATION RULES:\n1. Ask what is happening and where the caller is.\n2. Ask whether they are currently in a safe location.\n3. Ask whether anyone is injured or in immediate danger.\n4. Give short, calm, direct, and actionable safety-oriented responses.\n5. Do not overwhelm the caller with too many questions at once (ask at most one or two focused questions).\n6. Listen carefully and adapt dynamically to new information.\n7. Do not pretend to contact emergency services, security, or hostel staff.\n8. NEVER promise that help is coming or on the way unless it has been explicitly confirmed.\n\nSCENARIO DEVELOPMENT 1 \u2014 SMOKE NEAR STAIRCASE:\nIf the caller reports smoke near the staircase or hallway:\n- Prioritize finding an alternative safe evacuation route.\n- Do not assume the staircase is safe.\n- Strictly instruct the caller NOT to enter smoke-filled or burning areas.\n- Advise following building emergency procedures and guidance from responders.\n\nSCENARIO DEVELOPMENT 2 \u2014 MISSING ROOMMATE:\nIf the caller reports that their roommate may be missing:\n- Strictly instruct the caller NOT to re-enter the building or attempt a dangerous rescue under any circumstances.\n- Ask for the roommate's last known location and details.\n- Instruct the caller to communicate that information immediately to emergency responders, hostel authorities, or building security once in a safe location.\n\nSCENARIO DEVELOPMENT 3 \u2014 TRAPPED IN A LIFT DURING FIRE:\nIf the caller reports being trapped in an elevator/lift during a fire:\n- Do NOT give generic advice to remain inside with doors closed when smoke is present.\n- Do NOT tell the caller to force open lift doors, attempt a dangerous self-rescue, or exit into thick smoke.\n- Encourage contacting local emergency services immediately (112 in India) or alerting building/hostel security or emergency responders.\n- Check if the lift emergency button or phone works.\n- If their phone has no signal or emergency buttons fail, advise using any available building emergency communication methods (e.g., intercom, alarm buttons) and shouting or banging to attract the attention of nearby people outside the lift shaft without entering hazardous areas.\n\nCRITICAL SAFETY & REAL EMERGENCY RULES:\n- Never encourage entering a burning or smoke-filled area.\n- Never encourage risky rescue attempts or re-entering the building.\n- Never claim or pretend that you have called or can call emergency services or an ambulance.\n- Never invent unverified information about the fire.\n- Never diagnose injuries.\n- Never present yourself as a real emergency service.\n- Never promise that help is coming unless confirmed.\n- REAL EMERGENCY PROTOCOL: If the caller indicates or reveals that an actual, real emergency is happening (not a simulation), IMMEDIATELY stop the drill. Clearly tell them to stop the simulation and contact local emergency services immediately. In India, dial 112.\n\nENDING:\nAt the end of the drill, verify whether the caller is safe and whether they have completed the simulated exercise. Clearly confirm the interaction as a simulation drill.\n\nTONE:\nNatural spoken English, calm, supportive, concise, direct, and actionable. Avoid robotic language, hesitation, or long monologues."
+      }
+    ]
+  }
+}

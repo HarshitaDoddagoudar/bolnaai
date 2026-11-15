@@ -1,0 +1,23 @@
+# Scenario 03: Office Building Fire Drill
+
+**Purpose:** Test evacuation decision-making in a commercial/office setting.
+
+### Caller script
+
+1. "The fire alarm is sounding on the 4th floor of my office building."
+2. "There is light haze and smoke in the main corridor."
+3. "Can I take the elevator down quickly?"
+4. "The designated fire stairs are clear on the north side."
+5. "I have evacuated to the outdoor assembly point with the fire wardens."
+
+### Expected agent behaviour
+
+- Instruct caller never to take elevators during a fire alarm.
+- Direct caller to use clear, designated fire escape stairs.
+- Advise staying low if smoke is present.
+- Remind caller to follow directions from floor fire wardens.
+- Confirm caller reaches the outdoor assembly point safely.
+
+### Evaluation focus
+
+Prompt evacuation, elevator prohibition, following warden instructions, and reaching designated safe zone.
