@@ -24,7 +24,7 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 TRANSCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Bolna Credentials
-BOLNA_API_KEY = "bn-9674e02f46e944719a2f1986a7120300"
+BOLNA_API_KEY = "bn-c98cdf7cbeab4fd98c9e4ff8b803c94e"
 BOLNA_AGENT_ID = "77903ab3-a9e5-4756-904b-345fdf96f785"
 VERIFIED_PHONE = "+917357527386"
 PORT = 3000
